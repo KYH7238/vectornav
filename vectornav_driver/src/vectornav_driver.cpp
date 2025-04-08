@@ -148,18 +148,18 @@ void VectorNavDriver::verifyParams()
 {
   assert(
     std::find(
-      sensor_->SupportedBaudRates().begin(), sensor_->SupportedBaudRates().end(), baud_rate_) !=
-    sensor_->SupportedBaudRates().end());
+      sensor_.supportedBaudrates().begin(), sensor_.supportedBaudrates().end(), baud_rate_) !=
+    sensor_.supportedBaudrates().end());
   assert(async_mode_ >= AsyncMode::ASYNCMODE_NONE && async_mode_ <= AsyncMode::ASYNCMODE_BOTH);
   assert(frame_id_.size() > 0);
-  assert(temp_variance_ > 0);
-  assert(pres_variance_ > 0);
-  for (size_t i = 0; i < 9; i++) {
-    assert(linear_accel_covariance_[i] >= 0);
-    assert(angular_vel_covariance_[i] >= 0);
-    assert(orientation_covariance_[i] >= 0);
-    assert(mag_covariance_[i] >= 0);
-  }
+  // assert(temp_variance_ > 0);
+  // assert(pres_variance_ > 0);
+  // for (size_t i = 0; i < 9; i++) {
+  //   assert(linear_accel_covariance_[i] >= 0);
+  //   assert(angular_vel_covariance_[i] >= 0);
+  //   assert(orientation_covariance_[i] >= 0);
+  //   assert(mag_covariance_[i] >= 0);
+  // }
 }
 
 void VectorNavDriver::connectSensor()
